@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Draw Me (Alpha)</title>
+</head>
+
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC:700" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Playball" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="script.js"></script>
+
+<body>
+
+    <div style="background:#E8E8E8;padding:10px;padding-bottom:20px">
+        <h1 style="font-family: 'Playfair Display SC', serif;text-align:center;margin-bottom:10px">DRAW ME &copy;</h1>
+
+        <hr style="margin-bottom:15px;padding-top:0px;" width="500px" />
+        <center>
+            <div align="center" id="MainDiv" style="background:#F2F2F2;box-shadow:5px 5px 5px silver;padding:10px;max-width:90%;">
+
+                <canvas id="painter" height="600em" width="1500em"></canvas>
+                <br />
+                <div class="holder">
+                    <span>Colors:</span>
+                    <button onclick="Color('black')">Black</button>
+                    <button onclick="Color('red')">Red</button>
+                    <button onclick="Color('blue')">Blue</button>
+                    <button onclick="Color('brown')">Brown</button>
+                    <button onclick="Color('yellow')">Yellow</button>
+                    <button onclick="Color('green')">Green</button>
+                    <button onclick="Color('pink')">Pink</button>
+                    <input id="color" type="color" onclick="Color(this.value)" onchange="Color(this.value)"></input>
+                    <br /></div>
+                <div class="holder">
+                    <span>Thickness:</span>
+                    <input value="1" id="number" min="1" max="100" type="number"></input><br /></div>
+                <div class="holder">
+                    <span>Line Join Type:</span>
+                    <select id="lineJoin">
+<option value="miter">Sharp</option><option value="round">Round</option><option value="bevel">Bevel</option></select></div>
+
+                <div class="holder">
+                    <span>Other:</span>
+                    <button onclick="Color('white')">Eraser</button>
+                    <button onclick="ClearCanvas()">Clear Canvas</button>
+                    <button onclick="Preview()">Preview</button>
+                    <button onclick="Save()">Save</button>
+                </div>
+            </div>
+        </center>
+    </div>
+</body>
+
+</html>

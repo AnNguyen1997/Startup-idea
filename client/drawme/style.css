@@ -1,0 +1,16 @@
+#painter {
+	cursor: crosshair;
+	border: 1px solid white;
+	display: inline-block;
+	margin: 5px 5px 15px 5px;
+	background: white;
+	display: inline-block;
+}
+
+#number {
+	width: 100px;
+}
+
+.holder {
+	margin: 7px;
+}
