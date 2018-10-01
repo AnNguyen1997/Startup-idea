@@ -1,0 +1,20 @@
+canvas {
+	cursor: crosshair;
+	border: 1px solid white;
+	display: inline-block;
+	margin: 5px 5px 15px 5px;
+	background: white;
+	display: inline-block;
+}
+
+input[type="number"] {
+	width: 100px;
+}
+
+.holder {
+	margin: 7px;
+}
+
+.eraser {
+  cursor: url('../../assets/eraser.cur'), auto;
+}
