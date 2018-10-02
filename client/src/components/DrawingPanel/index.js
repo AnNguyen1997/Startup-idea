@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
+import DrawingPanelControls from './DrawingPanelControls';
+import DrawingPanelFooter from './DrawingPanelFooter';
 
 export default class DrawingPanel extends Component {
   constructor(props){
@@ -103,67 +105,15 @@ export default class DrawingPanel extends Component {
     return (
       <div className="container">
         <div className="main">
-          <div className="controls">
-            <div className="control">
-              <img
-                className={this.state.isErasing ? '' : 'chosen'}
-                src="https://png.icons8.com/dusk/50/8E44AD/edit.png"
-                alt="pencil icon"
-                onClick={this.usePencil} />
-            </div>
-            <div className="control">
-              <img
-                className={this.state.isErasing ? 'chosen' : ''}
-                src="https://png.icons8.com/dusk/50/8E44AD/eraser.png"
-                alt="eraser icon"
-                onClick={this.useEraser} />
-            </div>
-            <div className="control">
-              <input type="color" id="color" onChange={this.onColorChange} />
-            </div>
-            <div className="control">
-              <div>
-                <input
-                  type="radio"
-                  className="radio_item"
-                  value="miter"
-                  name="item"
-                  id="radio1"
-                  onClick={this.onLineJoinChange}
-                  defaultChecked="true"/>
-                <label className="label_item" htmlFor="radio1">
-                  <img src="../../assets/icons/miter.png" alt="miter icon"/>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  className="radio_item"
-                  value="round"
-                  name="item"
-                  id="radio2"
-                  onClick={this.onLineJoinChange} />
-                <label className="label_item" htmlFor="radio2">
-                  <img src="../../assets/icons/round.png" alt="round icon"/>
-                </label>
-              </div>
-              <div>
-                <input
-                  type="radio"
-                  className="radio_item"
-                  value="bevel"
-                  name="item"
-                  id="radio3"
-                  onClick={this.onLineJoinChange} />
-                <label className="label_item" htmlFor="radio3">
-                  <img src="../../assets/icons/bevel.png" alt="bevel icon"/>
-                </label>
-              </div>
-            </div>
-            <div className="control">
-              <input type="range" value={this.state.thickness} step="1" min="1" max="100" onChange={this.onThicknessChange} />
-            </div>
-          </div>
+          <DrawingPanelControls
+            isErasing={this.state.isErasing}
+            thickness={this.state.thickness}
+            onPencilClick={this.usePencil}
+            onEraserClick={this.useEraser}
+            onColorChange={this.onColorChange}
+            onLineJoinChange={this.onLineJoinChange}
+            onThicknessChange={this.onThicknessChange}
+          />
           <canvas
             ref="canvas"
             className={this.state.isErasing ? 'eraser' : ''}
@@ -174,11 +124,10 @@ export default class DrawingPanel extends Component {
             onMouseUp={this.handleMouseUp}>
           </canvas>
         </div>
-        <div className="footer">
-          <button onClick={this.clearCanvas}>Clear Canvas</button>
-          <button onClick={this.preview}>Preview</button>
-          <button>Save</button>
-        </div>
+        <DrawingPanelFooter
+          clearCanvas={this.clearCanvas}
+          preview={this.preview}
+        />
       </div>
     );
   }
