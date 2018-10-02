@@ -101,42 +101,83 @@ export default class DrawingPanel extends Component {
 
   render(){
     return (
-      <div>
-        <canvas
-          ref="canvas"
-          className={this.state.isErasing ? 'eraser' : ''}
-          height={600}
-          width={1000}
-          onMouseMove={this.handleMouseMove}
-          onMouseDown={this.handleMouseDown}
-          onMouseUp={this.handleMouseUp}></canvas>
-        <br />
-        <div className="holder">
-            <span>Colors:</span>
-            <input id="color" type="color" onChange={this.onColorChange}></input>
-            <br />
+      <div className="container">
+        <div className="main">
+          <div className="controls">
+            <div className="control">
+              <img
+                className={this.state.isErasing ? '' : 'chosen'}
+                src="https://png.icons8.com/dusk/50/8E44AD/edit.png"
+                alt="pencil icon"
+                onClick={this.usePencil} />
+            </div>
+            <div className="control">
+              <img
+                className={this.state.isErasing ? 'chosen' : ''}
+                src="https://png.icons8.com/dusk/50/8E44AD/eraser.png"
+                alt="eraser icon"
+                onClick={this.useEraser} />
+            </div>
+            <div className="control">
+              <input type="color" id="color" onChange={this.onColorChange} />
+            </div>
+            <div className="control">
+              <div>
+                <input
+                  type="radio"
+                  className="radio_item"
+                  value="miter"
+                  name="item"
+                  id="radio1"
+                  onClick={this.onLineJoinChange}
+                  defaultChecked="true"/>
+                <label className="label_item" htmlFor="radio1">
+                  <img src="../../assets/icons/miter.png" alt="miter icon"/>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  className="radio_item"
+                  value="round"
+                  name="item"
+                  id="radio2"
+                  onClick={this.onLineJoinChange} />
+                <label className="label_item" htmlFor="radio2">
+                  <img src="../../assets/icons/round.png" alt="round icon"/>
+                </label>
+              </div>
+              <div>
+                <input
+                  type="radio"
+                  className="radio_item"
+                  value="bevel"
+                  name="item"
+                  id="radio3"
+                  onClick={this.onLineJoinChange} />
+                <label className="label_item" htmlFor="radio3">
+                  <img src="../../assets/icons/bevel.png" alt="bevel icon"/>
+                </label>
+              </div>
+            </div>
+            <div className="control">
+              <input type="range" value={this.state.thickness} step="1" min="1" max="100" onChange={this.onThicknessChange} />
+            </div>
+          </div>
+          <canvas
+            ref="canvas"
+            className={this.state.isErasing ? 'eraser' : ''}
+            width={window.innerWidth-150}
+            height={window.innerHeight-100}
+            onMouseMove={this.handleMouseMove}
+            onMouseDown={this.handleMouseDown}
+            onMouseUp={this.handleMouseUp}>
+          </canvas>
         </div>
-        <div className="holder">
-            <span>Thickness:</span>
-            <input min="1" max="100" type="number" onChange={this.onThicknessChange}></input><br /></div>
-        <div className="holder">
-            <span>Line Join Type:</span>
-            <select id="lineJoin" onChange={this.onLineJoinChange}>
-              <option value="miter">Sharp</option>
-              <option value="round">Round</option>
-              <option value="bevel">Bevel</option>
-            </select>
-        </div>
-        <div className="holder">
-            <span>Other:</span>
-            <button onClick={this.usePencil}>Pencil</button>
-            <button
-              onClick={this.useEraser}>
-              Eraser
-            </button>
-            <button onClick={this.clearCanvas}>Clear Canvas</button>
-            <button onClick={this.preview}>Preview</button>
-            <button>Save</button>
+        <div className="footer">
+          <button onClick={this.clearCanvas}>Clear Canvas</button>
+          <button onClick={this.preview}>Preview</button>
+          <button>Save</button>
         </div>
       </div>
     );
