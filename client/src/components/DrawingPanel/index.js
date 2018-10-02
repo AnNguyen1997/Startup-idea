@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './index.css';
 import DrawingPanelControls from './DrawingPanelControls';
 import DrawingPanelFooter from './DrawingPanelFooter';
+import DrawingPanelSearchBar from './DrawingPanelSearchBar';
+import DrawingPanelSearchResults from './DrawingPanelSearchResults';
 
 export default class DrawingPanel extends Component {
   constructor(props){
@@ -11,7 +13,8 @@ export default class DrawingPanel extends Component {
       isErasing: false,
       lineJoin: 'miter',
       thickness: 1,
-      color: 'black'
+      color: 'black',
+      searchTerm: ''
     }
   }
 
@@ -101,9 +104,23 @@ export default class DrawingPanel extends Component {
   	window.open(dataUrl, "", "width=880, height=300");
   }
 
+  calculateCanvasHeight = () => {
+    let innerHeight = window.innerHeight;
+    if(this.state.searchTerm !== ''){
+      return innerHeight - 230;
+    }
+    return innerHeight - 150;
+  }
+
+  updateSearchTerm = (term) => {
+    this.setState({searchTerm: term});
+  }
+
   render(){
     return (
       <div className="container">
+        <DrawingPanelSearchBar updateSearchTerm={this.updateSearchTerm}/>
+        <DrawingPanelSearchResults searchTerm={this.state.searchTerm}/>
         <div className="main">
           <DrawingPanelControls
             isErasing={this.state.isErasing}
@@ -117,8 +134,8 @@ export default class DrawingPanel extends Component {
           <canvas
             ref="canvas"
             className={this.state.isErasing ? 'eraser' : ''}
-            width={window.innerWidth-150}
-            height={window.innerHeight-100}
+            width={window.innerWidth-200}
+            height={this.calculateCanvasHeight()}
             onMouseMove={this.handleMouseMove}
             onMouseDown={this.handleMouseDown}
             onMouseUp={this.handleMouseUp}>

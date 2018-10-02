@@ -18,6 +18,10 @@ body {
 	justify-content: center;
 }
 
+.controls {
+	margin-right: 20px;
+}
+
 .control {
   margin-bottom: 10px;
 }
@@ -114,8 +118,12 @@ input:focus, button:focus {
   outline: none;
 }
 
-input:hover, .control, button {
+input:hover, .control, button, .container img {
   cursor: pointer;
+}
+
+input[type="text"]:hover {
+	cursor: text;
 }
 
 .footer {
@@ -123,22 +131,21 @@ input:hover, .control, button {
   justify-content: center;
 }
 
-.footer button {
+button {
   margin-left: 30px;
   background: goldenrod;
-  border: none;
-  padding: 8px 20px;
-  font-size: 1.1em;
 	font-family: inherit;
+  border: none;
+  padding: 5px 20px;
+  font-size: 1em;
   box-shadow: -1px 1px 0px #c79309,
               -2px 2px 0px #c79309,
               -3px 3px 0px #c79309,
               -4px 4px 0px #c79309,
-              -5px 5px 0px #c79309,
-              -6px 6px 0px #c79309;
+              -5px 5px 0px #c79309;
 }
 
-.footer button:active {
+button:active {
   background: #cc9600;
   box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
   transform: translateY(4px);
@@ -146,4 +153,50 @@ input:hover, .control, button {
 
 .eraser {
   cursor: url('../../assets/cursor/eraser.cur'), auto;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  background: goldenrod;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  text-align: center;
+}
+
+.search-bar input {
+  border: none;
+  width: 500px;
+  border-radius: 20px;
+  font-size: 1em;
+  padding: 10px 20px;
+  box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.75) inset;
+}
+
+.search-bar button {
+  font-size: 0.7em;
+  background: #03b863;
+  box-shadow: -1px 1px 0px #036d3d,
+              -2px 2px 0px #036d3d,
+              -3px 3px 0px #036d3d,
+              -4px 4px 0px #036d3d;
+}
+
+.search-bar button:active {
+  background: #00964f;
+  box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
+}
+
+.search-results {
+  padding: 10px;
+  background: #dddddd;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.search-results img {
+  height: 50px;
+	margin-right: 10px
+}
+
+.hidden {
+	display: none;
 }
