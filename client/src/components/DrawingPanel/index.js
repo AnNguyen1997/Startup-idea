@@ -100,8 +100,9 @@ export default class DrawingPanel extends Component {
 
   preview = () => {
     const canvas = this.canvas();
-  	let dataUrl = canvas.toDataURL();
-  	window.open(dataUrl, "", "width=880, height=300");
+  	let dataUrl = canvas.toDataURL("image/png");
+    let win=window.open("", '_blank', "width=500, height=500");
+    win.document.write("<img src='"+dataUrl+"'/>");
   }
 
   calculateCanvasHeight = () => {
@@ -116,11 +117,24 @@ export default class DrawingPanel extends Component {
     this.setState({searchTerm: term});
   }
 
+  addImageToPanel = (img) => {
+    const canvas = this.canvas();
+    const ctx = this.ctx(canvas);
+    let imgWidth = img.clientWidth + 200;
+    let imgHeight = imgWidth * (img.clientHeight / img.clientWidth);
+    let dx = (canvas.clientWidth - imgWidth)/2;
+    let dy = (canvas.clientHeight - imgHeight)/2;
+    ctx.globalAlpha = 0.4;
+    ctx.drawImage(img, dx, dy, imgWidth, imgHeight);
+  }
+
   render(){
     return (
       <div className="container">
         <DrawingPanelSearchBar updateSearchTerm={this.updateSearchTerm}/>
-        <DrawingPanelSearchResults searchTerm={this.state.searchTerm}/>
+        <DrawingPanelSearchResults
+          searchTerm={this.state.searchTerm}
+          addImageToPanel={(img) => this.addImageToPanel(img)}/>
         <div className="main">
           <DrawingPanelControls
             isErasing={this.state.isErasing}
