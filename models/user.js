@@ -6,6 +6,7 @@ const userSchema = new Schema({
   _id: Schema.Types.ObjectId,
   username: String,
   password: String,
+  image_url: [String]
 });
 
 userSchema.plugin(passportLocalMongoose);
