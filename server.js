@@ -56,14 +56,12 @@ app.use("/logout", logoutRouter);
 app.use("/auth", loggedIn, authRouter);
 app.use("/upload", loggedIn, uploadRouter);
 
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "client/build")));
-  // Handle React routing, return all requests to React app
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
+// Serve any static files
+app.use(express.static(path.join(__dirname, "client/build")));
+// Handle React routing, return all requests to React app
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "client/build", "index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -78,7 +76,6 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render("error");
 });
 
 module.exports = app;
