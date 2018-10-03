@@ -1,11 +1,12 @@
 function loggedIn(req, res, next) {
-    if (req.user) {
-      console.log(req.user);
-      next();
-    } else {
-      console.log("not logged in");
-      res.send(false);
-    }
+  console.log(req.user);
+  if (req.user) {
+    next();
+  } else {
+    res.json({
+      username: null
+    });
   }
-  
-  module.exports = loggedIn;
+}
+
+module.exports = loggedIn;
