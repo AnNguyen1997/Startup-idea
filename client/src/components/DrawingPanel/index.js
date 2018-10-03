@@ -106,14 +106,16 @@ export default class DrawingPanel extends Component {
   }
 
   save = () => {
+    console.log('save')
     const canvas = this.canvas();
   	const dataUrl = canvas.toDataURL("image/png");
-    let formData = new FormData();
-    formData.append('image', dataUrl);
     fetch('/upload', {
-      body: formData,
+      body: JSON.stringify(dataUrl),
+      headers: {
+            "Content-Type": "application/json; charset=utf-8",
+      },
       method: 'POST'
-    });
+    }).then(res => { console.log('done'); });
   }
 
   calculateCanvasHeight = () => {
