@@ -32,7 +32,10 @@ class App extends Component {
 
   handleLogOut = () => {
     fetch("/logout")
-      .then(res => res.json())
+      .then(res => {
+        console.log(res);
+        return res.json();
+      })
       .then(res => {
         console.log(res);
         this.setState({
@@ -52,7 +55,7 @@ class App extends Component {
             username: res.username,
             loader: false
           });
-        }, 2000);
+        }, 3000);
       });
   };
 
