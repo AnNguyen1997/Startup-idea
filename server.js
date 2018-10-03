@@ -9,11 +9,13 @@ const passport = require("passport");
 const localStrategy = require("passport-local").Strategy;
 const session = require("express-session");
 const User = require("./models/user");
+const loggedIn = require("./middleware");
 
 // import routes
 const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
+const authRouter = require("./routes/auth");
 
 const app = express();
 
@@ -48,6 +50,9 @@ db.once("open", () => {
 app.use("/register", registerRouter);
 app.use("/login", loginRouter);
 app.use("/logout", logoutRouter);
+
+//routes that require login
+app.use("/auth", loggedIn, authRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
