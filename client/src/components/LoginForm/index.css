@@ -1,0 +1,182 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins");
+.wrap * {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+}
+
+.wrap {
+  background: linear-gradient(to right, silver, teal);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 100%;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.container {
+  position: relative;
+  border: 1px solid black;
+  width: 500px;
+  padding: 50px 55px 15px 55px;
+  border-radius: 15px;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+  background: white;
+}
+.container .background {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: white;
+}
+.logo {
+  /* background: url("../../assets/main-icon.png"); */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100px;
+  margin-bottom: 80px;
+}
+
+.label-input {
+  display: block;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.field {
+  width: 100%;
+  position: relative;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #ccc;
+}
+.icon {
+  position: relative;
+  font-size: 25px;
+  padding: 10px;
+}
+.wrap input {
+  display: inline-block;
+  font-size: 18px;
+  padding: 4px;
+  cursor: text;
+  width: calc(100% - 40px);
+  background: transparent;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.wrap input ~ .focus-border {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #21d4fd;
+  background: -moz-linear-gradient(left, #21d4fd 1%, #647ee5 51%, #b721ff 100%);
+  background: -webkit-linear-gradient(
+    left,
+    #21d4fd 1%,
+    #647ee5 51%,
+    #b721ff 100%
+  );
+  background: linear-gradient(to right, #21d4fd 1%, #647ee5 51%, #b721ff 100%);
+  transition: 0.4s;
+}
+.wrap input:focus ~ .focus-border {
+  width: 100%;
+  transition: 0.4s;
+}
+#submit {
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 10px;
+  color: white;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  background: #21d4fd;
+  background: -moz-linear-gradient(left, #21d4fd 0%, #b721ff 51%, #21d4fd 100%);
+  background: -webkit-linear-gradient(
+    left,
+    #21d4fd 0%,
+    #b721ff 51%,
+    #21d4fd 100%
+  );
+  background: linear-gradient(to right, #21d4fd 0%, #b721ff 51%, #21d4fd 100%);
+  background-size: 200% auto;
+  margin-bottom: 50px;
+}
+#submit:hover {
+  background-position: right center;
+  cursor: pointer;
+}
+.forgotPassword {
+  margin: 0 auto;
+  text-align: center;
+  font-size: 14px;
+}
+.forgotPassword:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+@media (max-width: 580px) {
+  .logo {
+    margin-bottom: 20px;
+  }
+  .container {
+    width: 100vw;
+    padding: 25px;
+  }
+}
+@media (max-width: 370px) {
+  .login-title {
+    font-size: 20px;
+  }
+  .wrap input {
+    font-size: 14px;
+  }
+}
+@media (max-height: 650px) {
+  .container {
+    padding: 45px 40px 15px 40px;
+    width: 450px;
+  }
+  .logo,
+  #submit {
+    margin-bottom: 30px;
+  }
+}
+@media (max-height: 560px) {
+  .login-title {
+    font-size: 28px;
+  }
+  .field {
+    margin-bottom: 30px;
+  }
+}
