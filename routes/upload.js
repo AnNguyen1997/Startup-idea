@@ -1,9 +1,9 @@
-const express = require("express"),
-  router = express.Router(),
-  multer = require("multer"),
-  cloudinary = require("cloudinary"),
-  key = require("../config/key"),
-  User = require("../models/user");
+const express = require("express");
+const router = express.Router();
+const multer = require("multer");
+const cloudinary = require("cloudinary");
+const key = require("../config/key");
+const User = require("../models/user");
 
 // cloudinary config here
 cloudinary.config({
@@ -14,21 +14,20 @@ cloudinary.config({
 
 const upload = multer({ dest: "../tmp/uploads" });
 
-router.post("/", upload.single("image"), function(req, res, next) {
+router.post("/", function(req, res, next) {
   const { _id, username } = req.user;
+  const { image } = req.body;
 
-  console.log('req.user', req.user);
-  console.log('req.file', req.file);
-
-  cloudinary.v2.uploader.upload(req.file.path, function(error, result) {
+  cloudinary.uploader.upload(image, function(result) {
     const image_url = result.secure_url;
     User.findById(_id, function(err, user) {
       if (err) return console.error(err);
       user.image_url.push(image_url);
-      user.save(function(err, post) {
+      user.save(function(err) {
         if (err) return console.error(err);
       });
     });
+    res.sendStatus(200);
   });
 });
 
