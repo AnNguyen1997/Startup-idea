@@ -16,6 +16,7 @@ const registerRouter = require("./routes/register");
 const loginRouter = require("./routes/login");
 const logoutRouter = require("./routes/logout");
 const authRouter = require("./routes/auth");
+const uploadRouter = require("./routes/upload");
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use("/logout", logoutRouter);
 
 //routes that require login
 app.use("/auth", loggedIn, authRouter);
+app.use("/upload", loggedIn, uploadRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
