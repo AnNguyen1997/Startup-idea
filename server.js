@@ -5,19 +5,37 @@ const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
 const key = require("./config/key");
+const passport = require("passport");
+const localStrategy = require("passport-local").Strategy;
+const session = require("express-session");
+const User = require("./models/user");
 
-const indexRouter = require("./routes");
-const usersRouter = require("./routes/users");
+// import routes
+const registerRouter = require("./routes/register");
+const loginRouter = require("./routes/login");
+const logoutRouter = require("./routes/logout");
 
 const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+app.use(
+  session({
+    secret: key.secret,
+    resave: true,
+    saveUninitialized: true
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(new localStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // setup database connection
-const db = mongoose.connection
+const db = mongoose.connection;
 const { db_id, db_pw } = key;
 const mongoURI = `mongodb://${db_id}:${db_pw}@ds115533.mlab.com:15533/startup-idea`;
 mongoose.connect(mongoURI);
@@ -26,8 +44,10 @@ db.once("open", () => {
   console.log(`Connected to ${mongoURI}`);
 });
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+// setup routes
+app.use("/register", registerRouter);
+app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 
 if (process.env.NODE_ENV === "production") {
   // Serve any static files
