@@ -138,11 +138,11 @@ button {
   border: none;
   padding: 5px 20px;
   font-size: 1em;
-  box-shadow: -1px 1px 0px #c79309,
-              -2px 2px 0px #c79309,
-              -3px 3px 0px #c79309,
-              -4px 4px 0px #c79309,
-              -5px 5px 0px #c79309;
+  box-shadow: -1px 1px 0px #a37400,
+              -2px 2px 0px #a37400,
+              -3px 3px 0px #a37400,
+              -4px 4px 0px #a37400,
+              -5px 5px 0px #a37400;
 }
 
 button:active {

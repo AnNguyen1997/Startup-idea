@@ -95,7 +95,7 @@ export default class DrawingPanel extends Component {
   clearCanvas = () => {
     const canvas = this.canvas();
     const ctx = this.ctx(canvas);
-  	ctx.clearRect(0, 0, 1000, 600);
+  	ctx.clearRect(0, 0, canvas.clientWidth, canvas.clientHeight);
   }
 
   preview = () => {
