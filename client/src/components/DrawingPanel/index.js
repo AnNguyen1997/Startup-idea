@@ -100,9 +100,20 @@ export default class DrawingPanel extends Component {
 
   preview = () => {
     const canvas = this.canvas();
-  	let dataUrl = canvas.toDataURL("image/png");
-    let win=window.open("", '_blank', "width=500, height=500");
+  	const dataUrl = canvas.toDataURL("image/png");
+    const win=window.open("", '_blank', "width=500, height=500");
     win.document.write("<img src='"+dataUrl+"'/>");
+  }
+
+  save = () => {
+    const canvas = this.canvas();
+  	const dataUrl = canvas.toDataURL("image/png");
+    let formData = new FormData();
+    formData.append('image', dataUrl);
+    fetch('/upload', {
+      body: formData,
+      method: 'POST'
+    });
   }
 
   calculateCanvasHeight = () => {
@@ -130,7 +141,7 @@ export default class DrawingPanel extends Component {
 
   render(){
     return (
-      <div className="container">
+      <div className="panel-container">
         <DrawingPanelSearchBar updateSearchTerm={this.updateSearchTerm}/>
         <DrawingPanelSearchResults
           searchTerm={this.state.searchTerm}
@@ -158,6 +169,7 @@ export default class DrawingPanel extends Component {
         <DrawingPanelFooter
           clearCanvas={this.clearCanvas}
           preview={this.preview}
+          save={this.save}
         />
       </div>
     );

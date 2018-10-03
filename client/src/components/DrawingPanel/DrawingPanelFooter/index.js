@@ -5,7 +5,7 @@ export default function(props){
     <div className="footer">
       <button onClick={props.clearCanvas}>Clear Canvas</button>
       <button onClick={props.preview}>Preview</button>
-      <button>Save</button>
+      <button onClick={props.save}>Save</button>
     </div>
   )
 }

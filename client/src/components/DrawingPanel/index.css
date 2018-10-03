@@ -3,10 +3,10 @@
 }
 
 body {
-  background: #4d4d4d;
+  background: var(--dark-gray);
 }
 
-.container {
+.panel-container {
   display: flex;
   flex-direction: column;
   padding-bottom: 20px;
@@ -30,7 +30,7 @@ body {
   width: 50px;
   border-radius: 50%;
   padding: 10px;
-  background: #f0f0f0;
+  background: var(--white);
   color: #8cdcdb;
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
@@ -47,7 +47,7 @@ body {
   border-radius: 50%;
   width: 50px;
   height: 50px;
-  background: #f0f0f0;
+  background: var(--white);
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
@@ -90,7 +90,7 @@ cursor: pointer;
 
 .control input[type=range] {
   -webkit-appearance: none;
-  background-color: #f0f0f0;
+  background-color: var(--white);
   width: 80px;
   height:10px;
   margin-top: 35px;
@@ -107,18 +107,22 @@ cursor: pointer;
 
 .control input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background-color: goldenrod;
+  background-color: var(--yellow);
   border-radius: 50%;
   width: 25px;
   height: 25px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+input::placeholder {
+	font-family: 'Indie Flower', cursive;
+}
+
 input:focus, button:focus {
   outline: none;
 }
 
-input:hover, .control, button, .container img {
+input:hover, .control, button, .panel-container img {
   cursor: pointer;
 }
 
@@ -133,20 +137,20 @@ input[type="text"]:hover {
 
 button {
   margin-left: 30px;
-  background: goldenrod;
+  background: var(--yellow);
 	font-family: inherit;
   border: none;
   padding: 5px 20px;
   font-size: 1em;
-  box-shadow: -1px 1px 0px #a37400,
-              -2px 2px 0px #a37400,
-              -3px 3px 0px #a37400,
-              -4px 4px 0px #a37400,
-              -5px 5px 0px #a37400;
+  box-shadow: -1px 1px 0px var(--dark-yellow),
+              -2px 2px 0px var(--dark-yellow),
+              -3px 3px 0px var(--dark-yellow),
+              -4px 4px 0px var(--dark-yellow),
+              -5px 5px 0px var(--dark-yellow);
 }
 
 button:active {
-  background: #cc9600;
+  background: var(--active-yellow);
   box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
   transform: translateY(4px);
 }
@@ -174,21 +178,21 @@ button:active {
 
 .search-bar button {
   font-size: 0.7em;
-  background: #03b863;
-  box-shadow: -1px 1px 0px #036d3d,
-              -2px 2px 0px #036d3d,
-              -3px 3px 0px #036d3d,
-              -4px 4px 0px #036d3d;
+  background: var(--green);
+  box-shadow: -1px 1px 0px var(--dark-green),
+              -2px 2px 0px var(--dark-green),
+              -3px 3px 0px var(--dark-green),
+              -4px 4px 0px var(--dark-green);
 }
 
 .search-bar button:active {
-  background: #00964f;
+  background: var(--active-green);
   box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
 }
 
 .search-results {
   padding: 10px;
-  background: #dddddd;
+  background: var(--light-white);
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
