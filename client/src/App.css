@@ -9,3 +9,48 @@
   --active-yellow: #cc9600;
   --dark-gray: #4d4d4d;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:hover {
+  color: var(--dark-gray);
+}
+
+input::placeholder {
+	font-family: 'Indie Flower', cursive;
+}
+
+input:focus, button:focus {
+  outline: none;
+}
+
+input:hover, button {
+  cursor: pointer;
+}
+
+input[type="text"]:hover {
+	cursor: text;
+}
+
+button {
+  margin-left: 30px;
+  background: var(--yellow);
+	font-family: inherit;
+  border: none;
+  padding: 5px 20px;
+  font-size: 1em;
+  box-shadow: -1px 1px 0px var(--dark-yellow),
+              -2px 2px 0px var(--dark-yellow),
+              -3px 3px 0px var(--dark-yellow),
+              -4px 4px 0px var(--dark-yellow),
+              -5px 5px 0px var(--dark-yellow);
+}
+
+button:active {
+  background: var(--active-yellow);
+  box-shadow: -1px 1px 0px rgba(0,0,0,0.12);
+  transform: translateY(4px);
+}

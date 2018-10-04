@@ -81,7 +81,9 @@ class LoginForm extends Component {
         {redirect && <Redirect to="/" />}
         <div className="container">
           <div className="background" />
-          <div className="logo" />
+          <div className="logo">
+            <img src="../assets/logo.png" alt="logo" />
+          </div>
           <form id="form" onSubmit={this.handleSubmit}>
             <div className="field">
               <span className="label-input">Username</span>

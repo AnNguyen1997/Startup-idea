@@ -6,9 +6,7 @@ const Loader = () => {
   return (
     <div className="loader-container">
       <div className="loader">
-        // <span />
-        // <span />
-        // <span />
+        <img src='../assets/drawme.gif' alt="loader" />
       </div>
     </div>
   );

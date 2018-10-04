@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import DrawingPanel from "./components/DrawingPanel";
 import Loader from "./components/Loader";
 import LoginForm from "./components/LoginForm";
+import UserPage from "./components/UserPage";
 import {
   BrowserRouter as Router,
   Route,
@@ -73,6 +74,7 @@ class App extends Component {
             {!username && !loader && <Redirect to="/login" />}
           </Switch>
           <Route path="/" exact component={DrawingPanel} />
+          <Route path="/profile" exact component={UserPage} />
         </React.Fragment>
       </Router>
     );

@@ -8,6 +8,7 @@ router.get("/", function(req, res) {
 
   User.findById(_id, function(err, user) {
     if (err) return console.error(err);
+    console.log(user);
     res.json(user);
   });
 });
